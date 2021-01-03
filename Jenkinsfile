@@ -36,8 +36,9 @@ pipeline {
             }
         }
         stage('Integration Tests') {
-
-            echo 'TBD'
+            steps {
+                echo 'TBD'
+            }
         }
 
         stage('Deploy') {
