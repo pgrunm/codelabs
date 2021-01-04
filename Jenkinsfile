@@ -13,7 +13,7 @@ pipeline {
                 sh 'pwd'
                 dir('testing_codelab/step_07/') {
                     sh 'pwd'
-                    sh 'flutter build appbundle'
+                    sh 'flutter build appbundle --stacktrace --info'
                     
                     // Todo: Archive the Build Artifact.
                }
