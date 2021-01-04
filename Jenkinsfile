@@ -10,6 +10,8 @@ pipeline {
                 echo 'Building..'            
                 // Start with building the app
                 //sh 'flutter create --no-overwrite testing_codelab/step_07/'
+                sh 'pwd'
+                sh 'ls'
                 sh 'cd testing_codelab/step_07/'
                 sh 'flutter build appbundle'
                 
