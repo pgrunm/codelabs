@@ -11,8 +11,8 @@ pipeline {
                 // Start with building the app
                 //sh 'flutter create --no-overwrite testing_codelab/step_07/'
                 sh 'pwd'
-                sh 'ls'
                 sh 'cd testing_codelab/step_07/'
+                sh 'ls'
                 sh 'flutter build appbundle'
                 
                 // Todo: Archive the Build Artifact.
