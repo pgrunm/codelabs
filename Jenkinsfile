@@ -10,7 +10,7 @@ pipeline {
                 echo 'Building..'            
                 // Start with building the app
                 sh 'flutter create --no-overwrite testing_codelab/step_07'
-                sh 'cd testing_codelab/step_07/'
+                sh 'cd testing_codelab/step_07'
                 sh 'flutter build appbundle'
                 
                 // Todo: Archive the Build Artifact.
