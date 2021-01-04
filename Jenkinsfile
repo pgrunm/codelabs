@@ -16,27 +16,34 @@ pipeline {
                     sh 'flutter build appbundle'
                     
                     // Todo: Archive the Build Artifact.
-               }
+                }
             }
         }
         stage('Check the Code Quality') {
             steps {
-                echo 'Doing Code Quality Tests'
-                sh 'flutter analyze'
+                dir('testing_codelab/step_07/') {
+                    echo 'Doing Code Quality Tests'
+                    sh 'flutter analyze'
+                }
             }
         }
 
         stage('Unit Tests') {
             steps {
-                echo 'Doing Unit Tests'
-                sh 'flutter test test/models/favorites_test.dart'
+                dir('testing_codelab/step_07/') {
+                    echo 'Doing Unit Tests'
+                    sh 'flutter test test/models/favorites_test.dart'
+                }
             }
         }
         
         stage('Widget Tests') {
+            
             steps {
-                echo 'Doing Widget Tests'
-                sh 'flutter run test/home_test.dart '
+                dir('testing_codelab/step_07/') {
+                    echo 'Doing Unit Tests'
+                    sh 'flutter run test/home_test.dart'
+                }
             }
         }
         stage('Integration Tests') {
