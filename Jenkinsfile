@@ -13,6 +13,7 @@ pipeline {
                 sh 'pwd'
                 dir('testing_codelab/step_07/') {
                     sh 'pwd'
+                    sh 'flutter doctor -v'
                     sh 'flutter build appbundle'
                     
                     // Todo: Archive the Build Artifact.
