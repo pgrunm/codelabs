@@ -1,6 +1,7 @@
 pipeline {
     
     agent {
+        // Tells the pipeline to use an AWS ECS agent.
         label 'ecs'
     }
 
@@ -59,9 +60,28 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Beta Deployment') {
+            // Deploy as Beta Release if no there is no git tag
+            when { 
+                not { 
+                    buildingTag() 
+                } 
+            }
+
             steps {
-                echo 'Deploying....'
+                echo 'Deploying beta version to Play Store'
+                sh 'fastlane beta'
+            }
+        }
+        stage('Release Deployment') {
+            // Deploy as full release if the current commit contains a git tag
+            // Captures screenshots and uploads the app file to playstore
+            when { 
+                buildingTag() 
+            }
+            steps {
+                echo 'Deploying release version to Play Store'
+                sh 'fastlane playstore'
             }
         }
 
