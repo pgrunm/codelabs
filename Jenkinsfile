@@ -1,7 +1,8 @@
 pipeline {
     
     agent {
-        // Tells the pipeline to use an AWS ECS agent.
+        // Tells the pipeline to use an AWS ECS agent,
+        // because of the used label.
         label 'ecs'
     }
 
@@ -13,7 +14,8 @@ pipeline {
                 dir('testing_codelab/step_07/') {
                     sh 'flutter build appbundle'
                     
-                    // Archive the Build Artifact on the created S3 Bucket
+                    // Archive the Build Artifact on the 
+                    // created S3 Bucket.
                     archiveArtifacts "/build/app/outputs/bundle/release/*"
                 }
             }
@@ -23,7 +25,8 @@ pipeline {
                 dir('testing_codelab/step_07/') {
                     // Check the Code Quality
                     // Flutter Analyze performs a static analysis
-                    // See here for more details: https://flutter.dev/docs/reference/flutter-cli#flutter-commands
+                    // See here for more details: 
+                    // https://flutter.dev/docs/reference/flutter-cli#flutter-commands
                     echo 'Doing Code Quality Tests'
                     sh 'flutter analyze'
                 }
