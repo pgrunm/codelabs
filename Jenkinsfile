@@ -40,7 +40,7 @@ pipeline {
                     echo 'Doing Unit Tests'
                     // Point to Unit Test directory
                     // Coverage is reported to ./coverage/lcov.info
-                    sh 'flutter test --coverage test/models/'
+                    sh 'flutter test --coverage -r expanded test/models/'
                 }
             }
         }
@@ -50,8 +50,9 @@ pipeline {
             steps {
                 dir('testing_codelab/step_07/') {
                     // Run all Widget tests on the code
-                    echo 'Doing Unit Tests'
-                    sh 'flutter run test/home_test.dart'
+                    echo 'Running Widget Tests'
+                    // Runs Widget tests on all files
+                    sh 'flutter test --coverage -r expanded test/'
                 }
             }
         }
