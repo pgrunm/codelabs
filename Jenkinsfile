@@ -38,7 +38,9 @@ pipeline {
                 dir('testing_codelab/step_07/') {
                     // Run all unit tests
                     echo 'Doing Unit Tests'
-                    sh 'flutter test test/models/favorites_test.dart'
+                    // Point to Unit Test directory
+                    // Coverage is reported to ./coverage/lcov.info
+                    sh 'flutter test --coverage test/models/'
                 }
             }
         }
