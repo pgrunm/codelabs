@@ -3,7 +3,7 @@ pipeline {
     agent {
         // Tells the pipeline to use an AWS ECS agent,
         // because of the used label.
-        label 'ecs'
+        label 'Flutter'
     }
 
     stages {
