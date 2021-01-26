@@ -41,6 +41,8 @@ pipeline {
                     // Point to Unit Test directory
                     // Coverage is reported to ./coverage/lcov.info
                     sh 'flutter test --coverage -r expanded test/models/'
+                    // Reporting of Unit Test Coverage
+                    sh 'lcov -l codecov/*'
                 }
             }
         }
@@ -53,6 +55,8 @@ pipeline {
                     echo 'Running Widget Tests'
                     // Runs Widget tests on all files
                     sh 'flutter test --coverage -r expanded test/'
+                    // Reporting of Widget Test Coverage
+                    sh 'lcov -l codecov/*'
                 }
             }
         }
