@@ -1,0 +1,59 @@
+lane :screenshots do
+  # Capture Screenshots for Android
+  capture_android_screenshots
+  upload_to_play_store
+
+  # Capture Screenshots for iOS
+  capture_screenshots
+  upload_to_app_store
+end
+
+# Lane for Google Playstore
+lane :playstore do
+  gradle(
+    task: 'assemble',
+    build_type: 'Release'
+  )
+  # Multiline Changelog
+  changelog = prompt(
+    text: "Changelog: ",
+    multi_line_end_keyword: "END"
+  )
+  # Upload App to Playstore
+  upload_to_play_store 
+end
+
+# Lane for Playstore Beta Release
+lane :playstore do
+  gradle(
+    task: 'assemble',
+    build_type: 'Release'
+  )
+  # Get the Changelog from the last commits
+  changelog_from_git_commits
+  upload_to_play_store(track: 'beta') 
+end
+
+# Lane for iOS Appstore
+lane :appstore do               
+  # Sign the code
+  sync_code_signing(type: "appstore")  
+  # Build 
+  build_app(scheme: "Example_App")
+  # Multiline Changelog
+  changelog = prompt(
+    text: "Changelog: ",
+    multi_line_end_keyword: "END"
+  )
+  upload_to_app_store                 
+end
+
+# Lane for iOS Appstore Beta
+lane :appstore do               
+  # Sign the code
+  sync_code_signing(type: "appstore")  
+  # Build 
+  build_app(scheme: "Example_App")
+  changelog_from_git_commits
+  upload_to_testflight                 
+end
