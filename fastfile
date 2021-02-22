@@ -1,13 +1,3 @@
-lane :screenshots do
-  # Capture Screenshots for Android
-  capture_android_screenshots
-  upload_to_play_store
-
-  # Capture Screenshots for iOS
-  capture_screenshots
-  upload_to_app_store
-end
-
 # Lane for Google Playstore
 lane :playstore do
   gradle(
@@ -56,4 +46,14 @@ lane :appstore do
   build_app(scheme: "Example_App")
   changelog_from_git_commits
   upload_to_testflight                 
+end
+
+lane :screenshots do
+  # Capture Screenshots for Android
+  capture_android_screenshots
+  upload_to_play_store
+
+  # Capture Screenshots for iOS
+  capture_screenshots
+  upload_to_app_store
 end
