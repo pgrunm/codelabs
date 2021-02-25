@@ -18,7 +18,7 @@ device_pools:
   - pool_name: iOS example pool
     pool_type: ios
     devices:
-      - name: Apple iPhone 1
+      - name: Apple iPhone 11
         model: MWL12
         os: 13.3.1
 
